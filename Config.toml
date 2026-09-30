@@ -1,0 +1,372 @@
+```toml
+# ============================================================
+# PaPita
+# Lightly Customized Pwnagotchi Configuration
+# ============================================================
+
+# ------------------------------------------------------------
+# BASIC SETTINGS
+# ------------------------------------------------------------
+
+main.name = "PaPita"
+main.lang = "en"
+
+main.iface = "wlan0mon"
+main.mon_start_cmd = "/usr/bin/monstart"
+main.mon_stop_cmd = "/usr/bin/monstop"
+main.mon_max_blind_epochs = 5
+main.no_restart = false
+
+# Additional channels
+main.extra_channels = 15
+
+# Personal/home network excluded from testing
+main.whitelist = [
+    "M4",
+]
+
+# ------------------------------------------------------------
+# CONFIGURATION / PLUGINS
+# ------------------------------------------------------------
+
+main.confd = "/etc/pwnagotchi/conf.d/"
+main.custom_plugins = "/etc/pwnagotchi/custom-plugins/"
+
+# ------------------------------------------------------------
+# GRID
+# ------------------------------------------------------------
+
+main.plugins.grid.enabled = false
+main.plugins.grid.report = true
+main.plugins.grid.exclude = [
+    "M4",
+]
+
+# ------------------------------------------------------------
+# AUTO UPDATE
+# ------------------------------------------------------------
+
+main.plugins.auto-update.enabled = true
+main.plugins.auto-update.install = true
+main.plugins.auto-update.interval = 1
+main.plugins.auto-update.token = ""
+
+# ------------------------------------------------------------
+# BLUETOOTH TETHER
+# ------------------------------------------------------------
+#
+# Allows PaPita to use a paired phone for Internet access.
+#
+# Pair the Raspberry Pi with the phone first.
+# Do not store Bluetooth PINs or private credentials here.
+# ------------------------------------------------------------
+
+main.plugins.bt-tether.enabled = true
+main.plugins.bt-tether.auto_reconnect = true
+
+main.plugins.bt-tether.show_on_screen = true
+main.plugins.bt-tether.show_mini_status = true
+main.plugins.bt-tether.show_detailed_status = true
+
+main.plugins.bt-tether.reconnect_interval = 60
+main.plugins.bt-tether.reconnect_fast_interval = 15
+main.plugins.bt-tether.reconnect_failure_cooldown = 300
+
+main.plugins.bt-tether.nap_connect_timeout = 20
+main.plugins.bt-tether.fast_dhcp = true
+
+main.plugins.bt-tether.reboot_on_stuck_bluetooth = false
+
+main.plugins.bt-tether.watchdog_enabled = true
+main.plugins.bt-tether.watchdog_dry_run = true
+main.plugins.bt-tether.watchdog_fail_threshold = 3
+
+# ------------------------------------------------------------
+# SYSTEM
+# ------------------------------------------------------------
+
+main.plugins.fix_services.enabled = true
+
+# ------------------------------------------------------------
+# GPS
+# ------------------------------------------------------------
+
+main.plugins.gps.enabled = false
+main.plugins.gps.speed = 19200
+main.plugins.gps.device = "/dev/ttyUSB0"
+
+main.plugins.gps_listener.enabled = false
+
+# ------------------------------------------------------------
+# LOGGING
+# ------------------------------------------------------------
+
+main.plugins.logtail.enabled = true
+main.plugins.logtail.max-lines = 10000
+
+main.log.path = "/etc/pwnagotchi/log/pwnagotchi.log"
+main.log.path-debug = "/etc/pwnagotchi/log/pwnagotchi-debug.log"
+
+main.log.rotation.enabled = true
+main.log.rotation.size = "10M"
+
+# ------------------------------------------------------------
+# MEMORY / TEMPERATURE
+# ------------------------------------------------------------
+
+main.plugins.memtemp.enabled = false
+main.plugins.memtemp.scale = "celsius"
+main.plugins.memtemp.orientation = "horizontal"
+
+# ------------------------------------------------------------
+# SESSION STATISTICS
+# ------------------------------------------------------------
+
+main.plugins.session-stats.enabled = true
+main.plugins.session-stats.save_directory = "/var/tmp/pwnagotchi/sessions/"
+
+# ------------------------------------------------------------
+# WEB CONFIGURATION
+# ------------------------------------------------------------
+
+main.plugins.webcfg.enabled = true
+main.plugins.webgpsmap.enabled = false
+
+# ------------------------------------------------------------
+# WIGLE
+# ------------------------------------------------------------
+
+main.plugins.wigle.enabled = false
+main.plugins.wigle.api_key = ""
+main.plugins.wigle.donate = false
+
+# ------------------------------------------------------------
+# WPA-SEC
+# ------------------------------------------------------------
+
+main.plugins.wpa-sec.enabled = false
+main.plugins.wpa-sec.api_key = ""
+main.plugins.wpa-sec.api_url = "https://wpa-sec.stanev.org"
+main.plugins.wpa-sec.download_results = false
+main.plugins.wpa-sec.show_pwd = false
+
+main.plugins.wpa-sec-list.enabled = false
+
+# ============================================================
+# SMALL CUSTOM FEATURES
+# ============================================================
+
+# Show network IP information
+main.plugins.IPDisplay.enabled = true
+main.plugins.IPDisplay.skip_devices = [
+    "lo",
+]
+
+# Internet connection status
+main.plugins.internet-connection.enabled = true
+
+# Session/handshake management
+main.plugins.handshakes-dl.enabled = true
+
+# Improved quick dictionary interface
+main.plugins.better_quickdic.enabled = true
+main.plugins.better_quickdic.face = "(¬‿¬)"
+main.plugins.better_quickdic.wordlist_folder = "/home/pi/wordlists/"
+
+# Association support
+main.plugins.enable_assoc.enabled = true
+
+# Disabled by default
+main.plugins.display-password.enabled = false
+main.plugins.enable_deauth.enabled = false
+
+# Small UI/utility additions
+main.plugins.tweak_view.enabled = true
+main.plugins.screen_refresh.enabled = true
+
+# Optional plugins disabled
+main.plugins.instattack.enabled = false
+main.plugins.switcher.enabled = false
+main.plugins.hashie.enabled = false
+main.plugins.exp.enabled = false
+main.plugins.example.enabled = false
+
+# ============================================================
+# DISPLAY
+# ============================================================
+
+ui.display.enabled = true
+ui.display.type = "waveshare_3"
+ui.display.color = "black"
+
+# Personal display orientation
+ui.display.rotation = 180
+
+# ------------------------------------------------------------
+# WEB UI
+# ------------------------------------------------------------
+
+ui.web.username = "admin"
+
+# Change this before using the web interface
+ui.web.password = "CHANGE_THIS_PASSWORD"
+
+ui.web.enabled = true
+ui.web.address = "0.0.0.0"
+ui.web.origin = ""
+ui.web.port = 9000
+ui.web.on_frame = ""
+ui.web.auth = false
+
+# ------------------------------------------------------------
+# GENERAL UI
+# ------------------------------------------------------------
+
+ui.invert = false
+ui.cursor = true
+ui.fps = 0.0
+
+ui.font.name = "DejaVuSansMono"
+ui.font.size_offset = 0
+
+# ============================================================
+# PAPITA CUSTOM DEVIL-INSPIRED FACES
+# ============================================================
+
+ui.faces.look_r = "(¬‿¬)"
+ui.faces.look_l = "(¬‿¬ )"
+
+ui.faces.look_r_happy = "(≖‿≖)"
+ui.faces.look_l_happy = "(≖‿≖ )"
+
+ui.faces.sleep = "(－_－) zZ"
+ui.faces.sleep2 = "(¬_¬) zZ"
+
+ui.faces.awake = "(ಠ‿ಠ)"
+
+ui.faces.bored = "(¬_¬)"
+ui.faces.intense = "(ಠ‿ಠ)"
+ui.faces.cool = "(⌐■‿■)"
+
+ui.faces.happy = "(≖‿≖)"
+ui.faces.excited = "(ᗒᗨᗕ)"
+ui.faces.grateful = "(≖‿≖)"
+ui.faces.motivated = "(งಠ_ಠ)ง"
+
+ui.faces.demotivated = "(≖︿≖)"
+ui.faces.smart = "(¬‿¬)"
+ui.faces.lonely = "(ಢ_ಢ)"
+ui.faces.sad = "(ಠ╭╮ಠ)"
+
+ui.faces.angry = "(╬ಠ益ಠ)"
+ui.faces.friend = "(♥‿♥)"
+ui.faces.broken = "(×_×)"
+ui.faces.debug = "(#ಠ‿ಠ)"
+
+ui.faces.upload = "(↑¬‿¬)"
+ui.faces.upload1 = "(↑ಠ‿ಠ)"
+ui.faces.upload2 = "(↓¬‿¬)"
+
+ui.faces.png = false
+
+ui.faces.position_x = 0
+ui.faces.position_y = 34
+
+# ============================================================
+# PERSONALITY
+# ============================================================
+
+personality.advertise = true
+personality.deauth = false
+personality.associate = true
+
+# Standard channel list
+personality.channels = [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+]
+
+personality.min_rssi = -200
+
+personality.ap_ttl = 120
+personality.sta_ttl = 300
+
+personality.recon_time = 30
+personality.max_inactive_scale = 2
+personality.recon_inactive_multiplier = 2
+
+personality.hop_recon_time = 10
+personality.min_recon_time = 5
+
+personality.max_interactions = 3
+personality.max_misses_for_recon = 5
+
+personality.excited_num_epochs = 10
+personality.bored_num_epochs = 15
+personality.sad_num_epochs = 25
+
+personality.bond_encounters_factor = 20000
+
+personality.throttle_a = 0.4
+personality.throttle_d = 0.9
+
+# ============================================================
+# BETTERCAP
+# ============================================================
+
+bettercap.handshakes = "/home/pi/handshakes"
+
+bettercap.silence = [
+    "ble.device.new",
+    "ble.device.lost",
+    "ble.device.disconnected",
+    "ble.device.connected",
+    "ble.device.service.discovered",
+    "ble.device.characteristic.discovered",
+    "wifi.client.new",
+    "wifi.client.lost",
+    "wifi.client.probe",
+    "wifi.ap.new",
+    "wifi.ap.lost",
+    "mod.started",
+]
+
+# ============================================================
+# RAM / ZRAM
+# ============================================================
+
+fs.memory.enabled = true
+
+# ------------------------------------------------------------
+# LOG MEMORY
+# ------------------------------------------------------------
+
+fs.memory.mounts.log.enabled = true
+fs.memory.mounts.log.mount = "/etc/pwnagotchi/log/"
+fs.memory.mounts.log.size = "50M"
+fs.memory.mounts.log.sync = 60
+fs.memory.mounts.log.zram = true
+fs.memory.mounts.log.rsync = true
+
+# ------------------------------------------------------------
+# TEMPORARY DATA MEMORY
+# ------------------------------------------------------------
+
+fs.memory.mounts.data.enabled = true
+fs.memory.mounts.data.mount = "/var/tmp/pwnagotchi"
+fs.memory.mounts.data.size = "10M"
+fs.memory.mounts.data.sync = 3600
+fs.memory.mounts.data.zram = true
+fs.memory.mounts.data.rsync = true
+```
